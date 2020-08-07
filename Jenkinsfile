@@ -9,11 +9,17 @@ pipeline {
             }
         }
         
-        stage('Build') {
+        stage('Requirements') {
             steps {
-                
+              	sh "pip install -r requirements.txt"  
             }
         }
+
+	stage('Build') {
+           steps {
+		sh "python3 app.py"
+	   }
+	}
         
         stage('Deploy') {
             steps {
