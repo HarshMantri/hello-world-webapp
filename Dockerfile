@@ -1,15 +1,10 @@
 FROM python:3.8
 
-# Create app directory
 WORKDIR /app
-
-# Install app dependencies
-COPY src/requirements.txt ./
+COPY requirements.txt /app
 
 RUN pip install -r requirements.txt
 
-# Bundle app source
-COPY src /app
+COPY app.py /app
 
-EXPOSE 8080
 CMD "gunicorn app:app"
